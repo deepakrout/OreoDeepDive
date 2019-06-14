@@ -26,3 +26,36 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
+
+def versionNumber = '2.3'
+
+task task2 {
+    description "This is simple task"
+
+    doFirst {
+        println ( "This is task  - doFirst" )
+    }
+    doLast {
+        println ( "This is task - last" )
+    }
+}
+
+task task3 {
+
+   description " This is task 3"
+    dependsOn task2
+
+    doFirst {
+        println("Task 3 doFirst $versionNumber")
+    }
+}
+
+task task4 {
+
+    description "This is task 4"
+    dependsOn task3
+
+    doLast{
+        println("Task 4 doLast")
+    }
+}
